@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,6 +15,7 @@ class MyApp extends StatelessWidget {
         backgroundColor: Colors.teal,
         body: SafeArea(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleAvatar(
                 radius: 50.0,
@@ -37,7 +41,48 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              SizedBox(
+                height: 20.0,
+                width: 150.0,
+                child: Divider(
+                  color: Colors.teal.shade100,
+                ),
+              ),
+              this._getCard(
+                iconData: Icons.phone,
+                title: '+55 99 9 9999-9999',
+              ),
+              this._getCard(
+                iconData: Icons.email,
+                title: 'robertoribeiro.code@gmail.com',
+              )
             ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _getCard({IconData iconData, String title = ''}) {
+    return Card(
+      margin: EdgeInsets.symmetric(
+        vertical: 10.0,
+        horizontal: 25.0,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListTile(
+          leading: Icon(
+            iconData,
+            color: Colors.teal,
+          ),
+          title: Text(
+            title,
+            style: TextStyle(
+              color: Colors.teal.shade900,
+              fontFamily: 'Source Sans Pro',
+              fontSize: 17.5,
+            ),
           ),
         ),
       ),
